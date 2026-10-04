@@ -1,0 +1,43 @@
+{
+  "date_beijing": "2026-10-05",
+  "provider": "DeepSeek official API",
+  "model_requested": "deepseek-v4-pro",
+  "generation_attempts": 2,
+  "first_attempt": {
+    "provider": "DeepSeek official API",
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "model_requested": "deepseek-v4-pro",
+    "model_returned": "deepseek-v4-pro",
+    "completed_at_utc": "2026-10-04T15:58:56.906264+00:00",
+    "usage": {
+      "prompt_tokens": 6718,
+      "completion_tokens": 5450,
+      "total_tokens": 12168,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 6718
+    },
+    "finish_reason": "stop",
+    "source_sha256": "a996d868728b29ce6bd35639bead8ad0cb41f30c08cfe3b5743265daf0b9e1f7",
+    "restored_draft_sha256": "fea4b49a1a43690cffee01842f7411bdcb9763f6a8adb3a10a71fde87647671b",
+    "protected_blocks": 14,
+    "source_chars": 14181,
+    "draft_chars": 14121
+  },
+  "second_attempt": {
+    "finish_reason": "stop",
+    "usage_not_recorded": true,
+    "note": "Output failed protected-block validation before usage metadata was saved. Do not treat first-attempt usage as total task usage."
+  },
+  "editorial_review": "Codex-reviewed adaptation of the second API draft; original numeric tables, code, figures and link targets restored exactly. Corrected invented cache key, incorrect stale/fresh explanation, duplicated placeholders, unsupported attribution and persistence actor; restored omitted technical facts and execution quotes.",
+  "source_sha256": "a996d868728b29ce6bd35639bead8ad0cb41f30c08cfe3b5743265daf0b9e1f7",
+  "final_sha256": "4d976be8c13f6740d66e5bdd5e17405361a8cf2141b615b2572bca9ea1a5ea59",
+  "preserved_blocks": 14,
+  "source_chars": 14181,
+  "final_chars": 13644,
+  "original": "articles/incident-review.before-deepseek.md",
+  "article": "articles/incident-review.md",
+  "production_or_cloud_configuration_changed": false
+}
