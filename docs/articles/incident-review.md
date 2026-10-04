@@ -12,7 +12,7 @@
 
 这对独立开发者和创业者尤其重要。我们选择 serverless，是为了降低运维压力、借助自动扩容快速验证 MVP；但自动扩容也意味着费用可以跟着请求一起增长。不能因为过去的项目没火，就一直把风险预防省掉。
 
-这也是我决定输出这个 [Cloudflare 成本审查 Skill](https://github.com/KurosawaGeeker/cloudflare-cost-playbook/blob/docs/cloudflare-cost-playbook/SKILL.md) 和 [AGENTS.md](https://github.com/KurosawaGeeker/cloudflare-cost-playbook/blob/docs/cloudflare-cost-playbook/AGENTS.md) 的原因。[开源仓库](https://github.com/KurosawaGeeker/cloudflare-cost-playbook)把规则放在最上层，原站脱敏代码和新的参考实现放在 `examples/`。我想让下一次“先做出来”，也能带着这些检查一起开始。
+这也是我决定输出这个 [Cloudflare 成本审查 Skill](https://github.com/KurosawaGeeker/cloudflare-cost-playbook/blob/docs/cloudflare-cost-playbook/SKILL.md) 和 [AGENTS.md](https://github.com/KurosawaGeeker/cloudflare-cost-playbook/blob/docs/cloudflare-cost-playbook/AGENTS.md) 的原因。源代码我放到了 examples 下面，请大家参考。
 
 ![投票页面：两张拟人形象、左右票数及投票按钮](images/voting-page.png)
 
