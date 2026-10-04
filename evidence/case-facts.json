@@ -1,0 +1,127 @@
+{
+  "schema": "public-case-facts-v1",
+  "case": "ds-vs-ds.win",
+  "captured_date": "2026-10-04",
+  "timezone": "Asia/Shanghai",
+  "billing_period": {
+    "start": "2026-09-11",
+    "end_ui": "2026-10-10",
+    "observed_through": "2026-10-04"
+  },
+  "account_usage": {
+    "currency": "USD",
+    "usage_cost_usd": 816.52,
+    "request_cost_usd": 785.4,
+    "cpu_cost_usd": 31.12,
+    "request_total_display": "2.63B",
+    "request_billable_display": "2.62B",
+    "d1_overage_cost_usd": 0.0,
+    "invoice_total_verified": false,
+    "payment_or_charge_verified": false
+  },
+  "request_fee_share_pct": 96.18870327732327,
+  "worker_window": {
+    "window": "Last 7 days shown on 2026-10-04",
+    "invocations_rounded": "2.61B",
+    "scope": "voting Worker; not account invoice or visitors"
+  },
+  "zone_window": {
+    "start_beijing": "2026-09-27T08:00:00+08:00",
+    "end_beijing": "2026-10-04T08:00:00+08:00",
+    "scope": "zone including subdomains",
+    "requests": 2677103137,
+    "burst_three_days_requests": 2606457597,
+    "burst_pct": 97.3611199724204
+  },
+  "zone_daily": [
+    {
+      "utc_bucket_date": "2026-09-27",
+      "requests": 4755212,
+      "average_rps": 55.03717592592593
+    },
+    {
+      "utc_bucket_date": "2026-09-28",
+      "requests": 797131326,
+      "average_rps": 9226.057013888889
+    },
+    {
+      "utc_bucket_date": "2026-09-29",
+      "requests": 1118612190,
+      "average_rps": 12946.900347222223
+    },
+    {
+      "utc_bucket_date": "2026-09-30",
+      "requests": 690714081,
+      "average_rps": 7994.3759375
+    },
+    {
+      "utc_bucket_date": "2026-10-01",
+      "requests": 18327112,
+      "average_rps": 212.11935185185186
+    },
+    {
+      "utc_bucket_date": "2026-10-02",
+      "requests": 177875,
+      "average_rps": 2.058738425925926
+    },
+    {
+      "utc_bucket_date": "2026-10-03",
+      "requests": 47385341,
+      "average_rps": 548.4414467592593
+    }
+  ],
+  "budget": {
+    "configured_usd": 10,
+    "exists_at_capture": true,
+    "historical_delivery_verified": false,
+    "hard_cap_verified": false
+  },
+  "code_facts": {
+    "initial_poll_interval_seconds": 3,
+    "later_poll_interval_seconds": 5,
+    "public_results_gate": "no Turnstile required",
+    "vote_gate": "server-side Siteverify with hostname/action/cdata checks",
+    "cache": "caches.default inside Worker",
+    "durable_objects_used_for_public_counts": false,
+    "public_response_cache_control": "no-store",
+    "browser_fetch_cache": "no-store",
+    "internal_retention_ttl_seconds": 86400,
+    "internal_freshness_seconds": 10,
+    "hidden_tab_network_polling_paused": true,
+    "failure_backoff_seconds": [
+      10,
+      20,
+      40,
+      60
+    ],
+    "ip_block_applies_to": "new voting writes, not public GET"
+  },
+  "limitations": [
+    "Different billing, Worker and zone windows are not interchangeable.",
+    "No final invoice or charge verified.",
+    "No full peak-period per-request attribution.",
+    "Requests and votes are not unique human visitors.",
+    "No verified explanation attributing the whole bill to a specific actor or IP.",
+    "Current worktree is not proof of an identical historical deployment.",
+    "The revised template is not a verified production migration."
+  ],
+  "local_source_hashes": {
+    "incident-report.md": "0bf438544431a158b0cdd9544c1c954b703cca2caed240f96233b8f78314865c",
+    "traffic-calculations.json": "edb77642028988c9883ed763bc35c20d53317e9d0b6c5287b600c876df8ef5b3",
+    "evidence/live-evidence-summary.json": "a61933b4e9d2ea28e0df973e55ef12e360284dfc3a0ac5fac7ca60d104ec749b"
+  },
+  "early_ballot_window": {
+    "start_beijing": "2026-09-27T00:49:41+08:00",
+    "end_beijing": "2026-09-27T10:06:15+08:00",
+    "total": 4559229,
+    "left": 1448682,
+    "right": 3110547,
+    "note": "Database minute-bucket total; different period and unit from HTTP/Worker requests."
+  },
+  "historical_incidents": {
+    "d1_overload_code": 7429,
+    "d1_overload_observed": true,
+    "production_ip_recording_start_beijing": "2026-09-30T20:30:46+08:00",
+    "ip_rule": "Reject eleventh distinct new ballot in rolling hour; durable voting block, not automatic one-hour unblock."
+  }
+}
