@@ -60,5 +60,13 @@ CPU限额、预算提醒或Worker内返回拒绝都不是月账单硬封顶。�
 - Python 费用模型 16 项、原站脱敏副本 29 项、快照运行时 8 项测试通过，共 53 项；两份示例语法检查及 Skill frontmatter 验证通过。
 - Miniflare 首次在受限沙箱里因 `listen EPERM` 无法监听回环地址；在允许本地监听的执行环境中重跑后 8 项全部通过。该环境错误不是云端故障。
 - 快照示例本地 HTTP 演示通过：页面、配置、快照、可靠写入确认与幂等重试；没有浏览器视觉检查或线上负载。
+- 快照示例两份 Wrangler `--dry-run` 打包通过：API 绑定与无用户 Worker 的静态配置分别检查，没有部署。
 - 全部拟发布 Git 历史的高置信私人标记与凭据形态检查未命中；原站示例 IP 使用回环或文档测试网段。该扫描是启发式，不能称为安全认证。
 - 采用 MIT 许可证，第三方图像及商标边界另列于根目录 `NOTICE.md`。社交稿未发送。
+
+## GitHub 开源发布记录
+
+- 2026-10-05，按所有者明确要求创建并推送 [KurosawaGeeker/cloudflare-cost-playbook](https://github.com/KurosawaGeeker/cloudflare-cost-playbook)。
+- GitHub API 回读：`private: false`，`is_template: true`，许可证 `MIT`，默认分支 `docs/cloudflare-cost-playbook`。可使用 **Use this template** 创建项目副本。
+- 初次上传内容提交为 `d59df5fcab6a4fc059e12b3c8be543c4266fc79b`，远端与本地一致。GitHub 文件树确认根目录 Skill 与规则、文章、三张图片及两份示例页面存在。
+- 本段是仓库发布验收，不是 Cloudflare 部署或计费效果验收。没有恢复原投票服务，没有向社交平台发文。
