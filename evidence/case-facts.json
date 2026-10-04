@@ -74,7 +74,20 @@
     "configured_usd": 10,
     "exists_at_capture": true,
     "historical_delivery_verified": false,
-    "hard_cap_verified": false
+    "hard_cap_verified": false,
+    "owner_receipt_report": {
+      "source": "Project owner statement in this conversation",
+      "reported_date": "2026-10-04",
+      "mailbox_provider": "Gmail",
+      "received_alert_count": 1,
+      "alert_threshold_usd": 10,
+      "subsequent_billing_alerts_received": false,
+      "discovery": "Mailbox-connected dots found the issue through proactive email search",
+      "mail_and_delivery_logs_independently_verified": false
+    },
+    "official_behavior_verified_date": "2026-10-04",
+    "official_behavior_source": "https://developers.cloudflare.com/billing/manage/budget-alerts/",
+    "official_behavior": "Account-wide usage-based spend; one notification per alert when its threshold is crossed in a billing period; resets next period; not a usage cap."
   },
   "code_facts": {
     "initial_poll_interval_seconds": 3,
@@ -103,7 +116,8 @@
     "Requests and votes are not unique human visitors.",
     "No verified explanation attributing the whole bill to a specific actor or IP.",
     "Current worktree is not proof of an identical historical deployment.",
-    "The revised template is not a verified production migration."
+    "The revised template is not a verified production migration.",
+    "Supplemental screenshots lack capture timestamps; mailbox receipt and dots discovery are owner-reported, not independently verified delivery logs."
   ],
   "local_source_hashes": {
     "incident-report.md": "0bf438544431a158b0cdd9544c1c954b703cca2caed240f96233b8f78314865c",
@@ -123,5 +137,31 @@
     "d1_overload_observed": true,
     "production_ip_recording_start_beijing": "2026-09-30T20:30:46+08:00",
     "ip_rule": "Reject eleventh distinct new ballot in rolling hour; durable voting block, not automatic one-hour unblock."
+  },
+  "supplemental_owner_screenshots": {
+    "provided_date": "2026-10-04",
+    "capture_timestamp_known": false,
+    "billing_period_independently_verified": false,
+    "chronology_relative_to_original_observation_verified": false,
+    "invoice_or_payment_verified": false,
+    "usage_cost_usd": 817.14,
+    "request_cost_usd": 786.0,
+    "cpu_cost_usd": 31.14,
+    "budget_threshold_usd": 10,
+    "budget_percent_display": "8171%",
+    "budget_month_label": "Oct 2026",
+    "configured_recipient_count": 1,
+    "files": [
+      {
+        "path": "articles/images/billing-usage-817-14.png",
+        "sha256": "b367702ffae941696cbbb29ddcdc5f83ab1ae73328fad812cc86cab35b081c39",
+        "bytes": 324362
+      },
+      {
+        "path": "articles/images/budget-alert-10-usd.png",
+        "sha256": "ce2326a2f5d7fa6932ebba9ca3db548f9432bb86d07d0a5085714d0a6e52a52d",
+        "bytes": 57272
+      }
+    ]
   }
 }
