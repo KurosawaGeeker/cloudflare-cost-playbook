@@ -1,14 +1,16 @@
-<img width="765" height="488" alt="image" src="https://github.com/user-attachments/assets/7923c044-987d-48c8-8d7f-3e32fe7d01f1" /># 一个小投票站的 800 多美元费用：我踩过的 Cloudflare 成本坑
+# 我一句话vibe的deepseek形象投票站如何让我3天亏掉1000刀
 
 我的投票站很普通：两张图，两个按钮，一条显示左右票数的进度条。用户点一下，页面就更新票数。
 
 在 vibe coding 这个网站的时候，我根本没想到它会火。我从未独立运维过这种流量规模的网站，总觉得它会和过去随手做的每个网站一样：几十个人看过，然后归于沉寂。
 
-所以我偷懒了。为了快点上线，我没有提前准备好风险预判和处理措施。脑子里默认的场景是“先做出来，反正没几个人用”，没有认真想过：如果它突然火了，甚至被脚本反复请求，我该怎么办。
+所以我偷懒了。为了快点上线，我没有提前准备好风险预判和处理措施。脑子里默认的场景是“先做出来，反正没几个人用”，没有认真想过：如果它突然火了，我的账单会不会爆炸。
+
+同时也证明了，即使开了 gpt-6-astra-高，其生产的代码完全不能够上生产，依然是一个玩具罢了，如果不 revie，不做限制，不加护栏，直接上生产将会带来巨大的损失，我这 800 多刀的账单就是例子。
 
 这件事让我意识到，**一定要有一个固定的、支持一句话 vibe coding 的仓库模板。** 这样，当我想偷懒、只想说一句业务需求时，agent 还能参考仓库里的规则开发，把成本检查、账单报警和异常处理纳入交付，不需要我每次都提前写一大段 prompt。
 
-这对独立开发者和创业者尤其重要。我们选择 serverless，是为了降低运维压力、借助自动扩容快速验证 MVP；但自动扩容也意味着费用可以跟着请求一起增长。不能因为过去的项目没火，就一直把风险准备省掉。
+这对独立开发者和创业者尤其重要。我们选择 serverless，是为了降低运维压力、借助自动扩容快速验证 MVP；但自动扩容也意味着费用可以跟着请求一起增长。不能因为过去的项目没火，就一直把风险预防省掉。
 
 这也是我决定输出这个 [Cloudflare 成本审查 Skill](https://github.com/KurosawaGeeker/cloudflare-cost-playbook/blob/docs/cloudflare-cost-playbook/SKILL.md) 和 [AGENTS.md](https://github.com/KurosawaGeeker/cloudflare-cost-playbook/blob/docs/cloudflare-cost-playbook/AGENTS.md) 的原因。[开源仓库](https://github.com/KurosawaGeeker/cloudflare-cost-playbook)把规则放在最上层，原站脱敏代码和新的参考实现放在 `examples/`。我想让下一次“先做出来”，也能带着这些检查一起开始。
 
