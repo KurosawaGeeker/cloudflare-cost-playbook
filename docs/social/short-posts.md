@@ -1,6 +1,6 @@
 # 短文案与其他平台发布稿
 
-所有稿件以 2026-10-04 的调查为准。尚未发布；项目发布 URL 未确定，因此使用同仓库的文件指引，不虚构上线地址。费用均指累计用量，不称已扣款；请求不称真人访问。
+所有稿件以 2026-10-04 的调查为准，尚未发送到社交平台。开源资料入口为 [cloudflare-cost-playbook](https://github.com/KurosawaGeeker/cloudflare-cost-playbook)，事故长文见 [GitHub 正文](https://github.com/KurosawaGeeker/cloudflare-cost-playbook/blob/docs/cloudflare-cost-playbook/docs/articles/incident-review.md)。费用均指累计用量，不称已扣款；请求不称真人访问。
 
 ## X 短帖：事故引入
 
@@ -10,7 +10,7 @@
 
 验证码、限流、缓存都做过，为什么还会这样？
 
-复盘写在 `articles/incident-review.md`：数据库缓存命中，不等于避开 Worker 请求计费。费用不是已确认扣款，请求也不等于真人。
+复盘写在 `docs/articles/incident-review.md`：数据库缓存命中，不等于避开 Worker 请求计费。费用不是已确认扣款，请求也不等于真人。
 
 ## X 短帖：缓存
 
@@ -18,7 +18,7 @@
 
 我的投票站踩的是这个坑：GET 先进入 Worker，再从缓存返回。数据库轻松了，调用账单仍在涨。
 
-完整案例见同仓库 `articles/incident-review.md`。
+完整案例见同仓库 `docs/articles/incident-review.md`。
 
 ## X 短帖：AI 编程验收
 
@@ -46,7 +46,7 @@ CDN/R2 也不是自动省钱。
 
 最容易误解的是：验证码管投票，缓存管数据库，都不自动管进入收费 Worker 的请求总数。我们解释过计费，也做过防刷，但没有把前置拦截、预算响应、全部入口和线上验收接成闭环。
 
-我把事故长文、脱敏证据、成本审查 skill、AGENTS.md 和本地示例模板放在同一个仓库。长文见 `articles/incident-review.md`。希望独立开发者用 AI 写出能跑的产品后，还能知道它在流量变大时会花多少钱。
+我把事故长文、脱敏证据、成本审查 skill、AGENTS.md 和本地示例模板放在同一个仓库。长文见 `docs/articles/incident-review.md`。希望独立开发者用 AI 写出能跑的产品后，还能知道它在流量变大时会花多少钱。
 
 ## 掘金 / 知乎文章导语
 
@@ -60,7 +60,7 @@ CDN/R2 也不是自动省钱。
 
 文章包含脱敏执行时间线、实际提示词节选、AI 助手的交付遗漏和可复算数字。改进模板属于本地示例，尚未作为原站修复方案完成线上验收。
 
-正文使用同仓库 `articles/incident-review.md`；数字与边界见 `evidence/case-facts.json`、`evidence/case-notes.md`。不要只截取账单数字而省略统计窗口与证据限制。
+正文使用同仓库 `docs/articles/incident-review.md`；数字与边界见 `docs/evidence/case-facts.json`、`docs/evidence/case-notes.md`。不要只截取账单数字而省略统计窗口与证据限制。
 
 ## 小红书图文稿
 
@@ -82,7 +82,7 @@ CDN/R2 也不是自动省钱。
 
 ⑤ 本地测试通过，不代表线上收费路径已经验收。
 
-现在我要求 AI 同时给功能模型和成本模型。文章、脱敏证据、审查 skill、AGENTS.md 和本地模板整理在同仓库，长文是 `articles/incident-review.md`。
+现在我要求 AI 同时给功能模型和成本模型。文章、脱敏证据、审查 skill、AGENTS.md 和本地模板整理在同仓库，长文是 `docs/articles/incident-review.md`。
 
 #独立开发 #AI编程 #Cloudflare #Serverless #技术复盘
 

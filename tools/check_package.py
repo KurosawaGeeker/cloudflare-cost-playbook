@@ -7,10 +7,12 @@ from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDED = {".git", "node_modules", ".wrangler", "__pycache__", ".build", ".local-demo"}
-REQUIRED = ["README.md", "AGENTS.md", "articles/incident-review.md", "social/x-thread.md",
-            "social/short-posts.md", "templates/AGENTS.md", "templates/project-brief.md",
-            "templates/voting-snapshot/README.md", "skills/cloudflare-cost-review/SKILL.md",
-            "evidence/case-facts.json", "evidence/case-notes.md"]
+REQUIRED = ["README.md", "AGENTS.md", "SKILL.md", "LICENSE", "NOTICE.md",
+            "docs/articles/incident-review.md", "docs/social/x-thread.md",
+            "docs/social/short-posts.md", "docs/project-brief.md",
+            "examples/voting-snapshot/README.md", "examples/original-voting-site/README.md",
+            "docs/evidence/case-facts.json", "docs/evidence/case-notes.md",
+            "docs/verification.md", "scripts/cost_model.py", "agents/openai.yaml"]
 
 
 def main():
@@ -22,7 +24,7 @@ def main():
     for path in ROOT.rglob("*"):
         if not path.is_file() or EXCLUDED.intersection(path.relative_to(ROOT).parts):
             continue
-        if path.suffix not in {".md", ".json", ".jsonc", ".py", ".js", ".html", ".yaml", ".yml", ".sql"}:
+        if path.suffix not in {".md", ".json", ".jsonc", ".py", ".js", ".mjs", ".html", ".svg", ".yaml", ".yml", ".sql"}:
             continue
         checked += 1
         content = path.read_text()

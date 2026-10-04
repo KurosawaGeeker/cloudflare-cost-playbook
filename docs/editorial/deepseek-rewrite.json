@@ -37,7 +37,20 @@
   "preserved_blocks": 14,
   "source_chars": 14181,
   "final_chars": 13644,
-  "original": "articles/incident-review.before-deepseek.md",
-  "article": "articles/incident-review.md",
-  "production_or_cloud_configuration_changed": false
+  "original": "docs/articles/incident-review.before-deepseek.md",
+  "article": "docs/articles/incident-review.md",
+  "production_or_cloud_configuration_changed": false,
+  "final_sha256_scope": "DeepSeek editorial result before later owner edits and repository reorganization; not the current article hash",
+  "subsequent_owner_edit_and_reorganization": {
+    "date_beijing": "2026-10-05",
+    "new_deepseek_request": false,
+    "changes": [
+      "preserved owner reflection on inexpensive requests and added requested personal lesson near the opening",
+      "corrected 9619% typo to 96.19% and paid-plan request allowance to 10 million per month",
+      "copied owner-added page screenshot to a relative repository asset",
+      "reorganized Skill at root, examples under examples, documents under docs",
+      "added public GitHub links"
+    ],
+    "current_article_sha256": "c91732db07ec85b1aaea08709d94c4b865218a15d221c1f9514eba69fa9abaf2"
+  }
 }

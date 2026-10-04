@@ -153,15 +153,23 @@
     "configured_recipient_count": 1,
     "files": [
       {
-        "path": "articles/images/billing-usage-817-14.png",
+        "path": "docs/articles/images/billing-usage-817-14.png",
         "sha256": "b367702ffae941696cbbb29ddcdc5f83ab1ae73328fad812cc86cab35b081c39",
         "bytes": 324362
       },
       {
-        "path": "articles/images/budget-alert-10-usd.png",
+        "path": "docs/articles/images/budget-alert-10-usd.png",
         "sha256": "ce2326a2f5d7fa6932ebba9ca3db548f9432bb86d07d0a5085714d0a6e52a52d",
         "bytes": 57272
       }
     ]
+  },
+  "voting_page_screenshot": {
+    "path": "docs/articles/images/voting-page.png",
+    "sha256": "f1aa3fb7399206881a0ee4fbde91ce78e5269deee36e8ea0b91becd244617ae5",
+    "captured_at": "unknown",
+    "usage": "illustrative page evidence only; not used as a billing or traffic measurement",
+    "privacy_review": "reviewed image; no raw IP, credential or private account identifier visible",
+    "third_party_artwork_license": "excluded from repository MIT license; see NOTICE.md"
   }
 }

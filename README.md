@@ -1,63 +1,91 @@
-# Cloudflare 成本事故复盘与项目启动包
+# Cloudflare Cost Playbook
 
-给独立开发者和使用 AI 编程的人：把“能运行”与“成本可解释、风险可响应”一起验收。
+**给一句话 vibe coding 带上成本护栏。** 面向独立开发者、创业者和 AI 编程助手的 Cloudflare 成本审查 Skill 与仓库启动规则。
 
-本仓库依据一个公开投票站的费用事故整理，提供文章、可执行审查 skill、项目规则、可运行示例和传播稿。所有材料只在本地准备；原站没有因本次任务恢复，仓库没有推送、发布或部署。
+我做过一个两张图、两个按钮的投票站。我以为它和过去随手做的小网站一样，几十个人看过就会归于沉寂，于是为了快点上线，省掉了提前准备风险处理的工作。后来账号显示了 800 多美元的累计用量费，绝大部分来自 Worker 请求，而不是数据库。
 
-## 从这里开始
+这个仓库就是为了少重复一次这样的教训：**即使你只说一句“做一个投票网站”，agent 也应该从仓库规则里读到成本审查要求。** Serverless 帮我们少管服务器、自动扩容，却不会自动控制账单。
 
-| 需要什么 | 文件 | 当前状态 |
-|---|---|---|
-| 读完整事故复盘 | [事故文章](articles/incident-review.md) | 可供审阅的中文长文，含代码、架构图、数字与执行选段 |
-| 让 AI 审查自己的项目 | [Cloudflare 成本审查 skill](skills/cloudflare-cost-review/SKILL.md) | 带价格快照、计算器、审查记录模板；没有安装到全局目录 |
-| 为已有项目加启动约束 | [可复制 AGENTS.md](templates/AGENTS.md)、[启动卡与提示词](templates/project-brief.md) | 合并到已有规则，不覆盖原规则 |
-| 复制读写分离示例 | [投票快照项目模板](templates/voting-snapshot/README.md) | 本地运行时验证；实际资源、CDN/WAF和计费效果待线上验收 |
-| 发 X 长帖或短文案 | [16条长帖](social/x-thread.md)、[各平台短稿](social/short-posts.md) | 草稿，未发送 |
-| 核对数字与执行口径 | [案例数据](evidence/case-facts.json)、[证据说明](evidence/case-notes.md) | 人工白名单摘要，不是最终发票或全量日志 |
-| 查看实际检查范围 | [本地验收记录](VERIFICATION.md) | 记录测试和剩余线上验证项 |
+## 先用起来
 
-## 最重要的区别
-
-“缓存省了数据库查询”和“请求不再进入动态收费程序”是两件事。业务防刷、流量防护、费用响应也需要分别验收。
-
-本案例截至 2026-10-04 的账号累计用量费用为 **$816.52**，其中请求费 **$785.40**，占 **96.19%**。这是当时的用量读回，不是已经核实的扣款。近7天投票 Worker 约26.1亿次调用，账号账期约26.3亿次请求，范围不同；这些数不能当真人访问或投票数量。
-
-示例选择公共结果由 R2 自定义域名/CDN 分发，受保护动态接口处理投票，Cron 每分钟发布固定快照。它是一个权衡示例，不是所有 Cloudflare 项目的标准答案，也没有在原站上线。若业务要求15秒发布或20秒以内更新，需要另评估调度、推送及相应成本。
-
-## 使用 skill
-
-可以直接让 AI 阅读 `skills/cloudflare-cost-review/SKILL.md`。若要让支持 skills 的工具发现它，把整个 `skills/cloudflare-cost-review/` 文件夹复制到该工具的 skills 目录；保留 `scripts/`、`references/` 和 `agents/`。不要只复制入口文件。
-
-示例任务：
-
-> 使用 $cloudflare-cost-review 审查我的项目。先画出请求和计费路径，分别计算正常、增长、异常流量成本；核对缓存减少了哪一层的用量，并给出上线证据和剩余风险。先不要部署或发线上负载。
-
-## 本地费用计算器
-
-只需 Python 3 标准库，不连接 Cloudflare：
+点击 GitHub 的 **Use this template** 创建自己的仓库，或者克隆后用支持 `AGENTS.md` 的编程助手打开：
 
 ```sh
-python3 tools/cost_model.py skills/cloudflare-cost-review/references/example-input.json
+git clone https://github.com/KurosawaGeeker/cloudflare-cost-playbook.git
+cd cloudflare-cost-playbook
+```
+
+然后直接提出业务需求，例如：
+
+> 做一个极简的单页投票网站，手机和电脑都能用，实时展示票数。
+
+根目录 [AGENTS.md](AGENTS.md) 要求助手在涉及 Cloudflare 公共接口、轮询或推送时，先读取 [SKILL.md](SKILL.md)，梳理请求与计费路径、流量模型、缓存验证和**账号级全局账单报警**。这些要求留在仓库里，不需要每次重新写进提示词。仍需确认你的工具确实读取了仓库规则；预算缺失时，助手应记录假设或询问，不能擅自替你购买服务。
+
+这是启动和审查模板，**不是开箱即有费用硬上限的托管服务**。克隆不会创建云资源；两个示例的公开路由默认关闭，实际 CDN、安全规则、告警送达与费用效果需要上线验收。
+
+## 仓库里有什么
+
+```text
+SKILL.md                 成本审查入口
+AGENTS.md                项目启动规则，给 agent 自动读取
+agents/                  Skill 的工具展示与触发配置
+references/              官方核验点、价格快照、模型输入、审查记录
+scripts/                 标准库费用计算器
+examples/
+  voting-snapshot/       读写分离的参考实现，含本地运行时测试
+  original-voting-site/  原投票站代码的脱敏副本，用于对照事故
+docs/
+  articles/              事故长文、改写前原稿与图片
+  evidence/              脱敏数字、统计口径与公开执行选段
+  editorial/             DeepSeek 文风改写指令与调用记录
+  social/                X 长帖和其他平台短稿
+  verification.md        实际验收记录与待验证项
+  project-brief.md        项目启动卡
+tests/                   费用模型回归测试
+tools/                   包结构、相对链接和隐私标记检查
+```
+
+| 你想做什么 | 入口 |
+|---|---|
+| 看事故怎么发生 | [事故长文](docs/articles/incident-review.md) |
+| 给已有项目加规则 | 合并 [AGENTS.md](AGENTS.md)，连同 Skill 资源一起放入项目 |
+| 做自己的投票原型 | [快照示例](examples/voting-snapshot/README.md) |
+| 对照原站的缓存和轮询代码 | [原站脱敏示例](examples/original-voting-site/README.md) |
+| 核对数字和执行记录 | [案例数字](docs/evidence/case-facts.json)、[证据说明](docs/evidence/case-notes.md) |
+| 准备分享这个案例 | [X 长帖](docs/social/x-thread.md)、[短稿](docs/social/short-posts.md) |
+| 看什么真的测过 | [验收记录](docs/verification.md) |
+
+## 单独安装 Skill
+
+在 Codex 中，可把以下四项复制到自己的 `~/.codex/skills/cloudflare-cost-review/`：
+
+```text
+SKILL.md
+agents/
+references/
+scripts/
+```
+
+不要只复制入口文件。也不需要把事故图片、整套示例和依赖一起装进 Skill。安装后可以显式调用 `$cloudflare-cost-review`；其他支持 skills 的工具使用自己的安装目录。仅把文件放在本仓库顶层，不代表每个工具都会把它注册成全局 Skill。
+
+## 在本地计算和检查
+
+只需 Python 3 标准库，计算器不连接 Cloudflare：
+
+```sh
+python3 scripts/cost_model.py references/example-input.json
 python3 -m unittest discover -s tests -v
 python3 tools/check_package.py
 ```
 
-复制输入 JSON 后修改：
+输入有两个容易填错的字段：`read_path` 区分公共读取直达 R2 和先经过 Worker 代理；`origin_fraction` 表示经过所有缓存层后，实际到 R2 的比例。Worker 代理命中缓存仍然有入口调用，CDN 缓存失效也可能把费用转移到存储读取。
 
-- `read_path` 必填：`direct_r2` 表示公共读不经过用户 Worker；`worker_proxy` 表示全部公共读先进入 Worker，缓存命中也计入口调用。
-- `public_reads` 已包含首次、轮询、重试等实际请求。`vote_posts` 包含实际提交尝试，而不是仅成功票数。额外个人GET、OPTIONS或后台调用若存在，应归集到动态调用模型后再比较，当前示例未建模它们。
-- `origin_fraction` 是经过所有缓存层后真正到R2的比例；`r2_operations_per_origin_read` 是每次回源对应Class B操作数，可表达HEAD+GET；`r2_class_b_other_operations` 单独计发布器读等操作。
-- `r2_class_a_operations` 和 `publisher_invocations` 是独立的实际/估算用量。30天每分钟一次是43,200次；每15秒一次是172,800次，但普通Cron不能直接提供15秒调度。DO alarm或外部发布器要另外核算其费用，不能把Worker调用数填0就宣称发布免费。
-- 输入示例对应一分钟发布：43,200次Worker定时调用、43,200次HEAD读取、43,200次PUT写入。它把CPU暂按0处理；实际场景要补入测得CPU、重试和竞争失败的操作数。
-- `monthly_allowance` 和 `account_usage_before_window` 属于同一账号、同一账期。模型计算账单函数的增量 `F(已有用量+情景用量)-F(已有用量)`，避免R2整百万取整被跨项目重复计算。短窗口不自动按天重置月额度；跨账期请拆成多次计算。
-- `freshness` 的发布周期、CDN TTL、浏览器TTL和轮询周期作保守相加。结果没有计入网络、调度延迟、重试与故障，不能当服务保证；低费用不代表满足实时性。
+完整单位、共享额度和排除项见 [计算器说明](docs/cost-model.md)。[价格快照](references/pricing.json)用于复算，不代替上线时核对套餐和官方价格；模型覆盖指定 Workers/R2 用量，不是全站总账单。
 
-价格快照见 [pricing.json](skills/cloudflare-cost-review/references/pricing.json)，核验日期2026-10-04。部署前重新核对官方价格、实际套餐和账号额度。结果排除了订阅、D1、DO、Queues、日志、安全付费选项及税费等，不能称为全站总账单。
+## 使用边界与贡献
 
-## 发布时怎样使用
+累计用量不是已核实的最终扣款，请求不等于真人访问，正常增长与异常请求都需要建模。原站示例是所有者本地工作区的脱敏副本，不能据此声称完整还原了高峰期线上版本。快照示例只通过了本地检查，没有替原站完成迁移或恢复服务。
 
-先审阅文章与证据口径，再选择仓库许可证和对外地址。推文中的文件链接可替换为发布后的实际链接。文章与宣传稿都保留“累计用量不是扣款”“请求不等于真人”和“示例未线上验证”的边界，不能为了传播效果去掉。
+代码与原创文字采用 [MIT](LICENSE)；案例截图里的第三方人物作品和标识不随仓库重新授权，详见 [NOTICE](NOTICE.md)。依赖保留各自许可证。
 
-仓库未选择对外许可证。任何依赖保留其原许可证；示例不是原站源码的完整复制，也没有收入原始凭据、IP、私人材料或原始会话。公开证据摘要是本地材料的白名单整理，散列用于版本核对，不构成第三方审计认证。
-
-本地提交使用仓库专用的通用作者信息，避免自动写入本机用户名和主机名；未改动全局Git配置。对外发布时可由所有者设置正式署名。
+欢迎提交可复现的修正；贡献前阅读 [贡献说明](docs/contributing.md)。不要提交账号密钥、原始 IP、私人身份材料或未经审核的原始日志。

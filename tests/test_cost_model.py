@@ -5,7 +5,7 @@ from pathlib import Path
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / "skills/cloudflare-cost-review"
+SKILL = ROOT
 spec = importlib.util.spec_from_file_location("cost_model", SKILL / "scripts/cost_model.py")
 model = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(model)

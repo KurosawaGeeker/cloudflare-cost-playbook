@@ -176,7 +176,7 @@ AI 编程交付应该同时包含功能模型和成本模型。
 
 验证码不能替调用预算签字，缓存不能替费用保护签字，页面能打开也不能证明运营安全。
 
-全文和数字见同仓库 `articles/incident-review.md`、`evidence/case-facts.json`。发布时保留口径说明。
+全文和数字见同仓库 `docs/articles/incident-review.md`、`docs/evidence/case-facts.json`。发布时保留口径说明。
 
 ---
 
