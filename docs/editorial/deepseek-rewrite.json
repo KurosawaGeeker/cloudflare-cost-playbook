@@ -55,9 +55,10 @@
   },
   "source_repository_split": {
     "date_beijing": "2026-10-05",
-    "repository_url": "https://github.com/KurosawaGeeker/cloudflare-voting-examples",
+    "repository_url": "https://github.com/KurosawaGeeker/ds-vs-ds-voting",
     "article_links_updated": true,
     "original_before_deepseek_unchanged": true,
-    "current_article_sha256": "1800c9c6a4e72c47819782387d4e6a16c0dc6905a564fc2f6088676cebde6b96"
+    "current_article_sha256": "535293c8a1f9c29debbbcc7f7bf119758a9bfc880e5eeb49a05b16c2c469bfa1",
+    "owner_remote_edits_preserved_through": "658cb7a"
   }
 }

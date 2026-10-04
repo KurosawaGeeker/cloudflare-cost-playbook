@@ -2,7 +2,7 @@
 
 初次验收日期：2026-10-04；目录与发布整理：2026-10-05。范围：规则、文稿与本地验证，不操作原投票站或 Cloudflare 生产资源。
 
-当前目录已将两份网站源码移至 [cloudflare-voting-examples](https://github.com/KurosawaGeeker/cloudflare-voting-examples)。下方先前的 `examples/` 路径和 53 项联合检查记录描述拆分前的版本；改写前文章按字节保留，也使用当时的目录表述。
+当前目录已将两份网站源码移至 [ds-vs-ds-voting](https://github.com/KurosawaGeeker/ds-vs-ds-voting)。下方先前的 `examples/` 路径和 53 项联合检查记录描述拆分前的版本；改写前文章按字节保留，也使用当时的目录表述。
 
 ## Skill 与费用模型
 
@@ -76,7 +76,7 @@ CPU限额、预算提醒或Worker内返回拒绝都不是月账单硬封顶。�
 
 ## 2026-10-05：源码独立开源
 
-- 按所有者后续要求，原站脱敏代码和快照示例从本仓库当前文件树移除，转入 [cloudflare-voting-examples](https://github.com/KurosawaGeeker/cloudflare-voting-examples)。本仓库只保留文档外部链接，不使用 submodule、安装脚本或自动下载拉取网站源码。
+- 按所有者后续要求，原站脱敏代码和快照示例从本仓库当前文件树移除，转入 [ds-vs-ds-voting](https://github.com/KurosawaGeeker/ds-vs-ds-voting)。本仓库只保留文档外部链接，不使用 submodule、安装脚本或自动下载拉取网站源码。
 - 文章、README、证据说明、传播稿、素材说明与包检查更新到新的仓库边界；不改写事故证据和按字节保留的旧稿。
 - README 克隆命令使用 `--depth 1`；新项目只获得当前规则与材料。为保留可追溯性，没有重写已经公开的提交历史；主动获取完整历史仍会包含拆分前的示例文件。GitHub 模板复制当前文件树。
 - 规则仓库 16 项模型测试与包检查通过；独立源码仓库 29 项原站测试、8 项快照运行时测试、语法与本地 HTTP 演示检查通过。源码及配置保持拆分前字节一致，仅更新说明文档和计算器引用。

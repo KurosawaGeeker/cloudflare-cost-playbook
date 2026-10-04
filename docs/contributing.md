@@ -11,7 +11,7 @@ python3 -m unittest discover -s tests -v
 python3 tools/check_package.py
 ```
 
-示例在 [独立源码仓库](https://github.com/KurosawaGeeker/cloudflare-voting-examples)，有自己的 README 和检查命令。不要把模拟器通过写成 CDN、WAF 或账单已在云端验证；也不要为了验证保护向线上制造大流量。
+示例在 [独立源码仓库](https://github.com/KurosawaGeeker/ds-vs-ds-voting)，有自己的 README 和检查命令。不要把模拟器通过写成 CDN、WAF 或账单已在云端验证；也不要为了验证保护向线上制造大流量。
 
 保留改写前原稿和截图来源信息。账号账期、Worker 时间窗口、Zone 请求、日志子操作、访客数和票数分别表述。累计用量费不是最终发票或实际扣款。
 

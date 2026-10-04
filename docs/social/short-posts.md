@@ -94,4 +94,4 @@ CDN/R2 也不是自动省钱。
 
 资料入口：[事故长文](../articles/incident-review.md)、[公开数字](../evidence/case-facts.json)、[证据说明](../evidence/case-notes.md)。技术主张对应的官方来源在长文和 [X 长帖资料列表](x-thread.md) 中逐项列出。
 
-源码另见 [cloudflare-voting-examples](https://github.com/KurosawaGeeker/cloudflare-voting-examples)，规则模板不会自动拉取该仓库。
+源码另见 [ds-vs-ds-voting](https://github.com/KurosawaGeeker/ds-vs-ds-voting)，规则模板不会自动拉取该仓库。
