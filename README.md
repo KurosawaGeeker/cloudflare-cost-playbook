@@ -11,7 +11,7 @@
 点击 GitHub 的 **Use this template** 创建自己的仓库，或者克隆后用支持 `AGENTS.md` 的编程助手打开：
 
 ```sh
-git clone https://github.com/KurosawaGeeker/cloudflare-cost-playbook.git
+git clone --depth 1 https://github.com/KurosawaGeeker/cloudflare-cost-playbook.git
 cd cloudflare-cost-playbook
 ```
 
@@ -21,7 +21,7 @@ cd cloudflare-cost-playbook
 
 根目录 [AGENTS.md](AGENTS.md) 要求助手在涉及 Cloudflare 公共接口、轮询或推送时，先读取 [SKILL.md](SKILL.md)，梳理请求与计费路径、流量模型、缓存验证和**账号级全局账单报警**。这些要求留在仓库里，不需要每次重新写进提示词。仍需确认你的工具确实读取了仓库规则；预算缺失时，助手应记录假设或询问，不能擅自替你购买服务。
 
-这是启动和审查模板，**不是开箱即有费用硬上限的托管服务**。克隆不会创建云资源；两个示例的公开路由默认关闭，实际 CDN、安全规则、告警送达与费用效果需要上线验收。
+这是启动和审查模板，**不是开箱即有费用硬上限的托管服务**。克隆不会创建云资源。本仓库当前版本不包含投票网站源码，也不通过 submodule、安装脚本或自动下载拉取源码。需要看代码时，再单独打开或克隆 [投票源码仓库](https://github.com/KurosawaGeeker/cloudflare-voting-examples)；实际 CDN、安全规则、告警送达与费用效果需要上线验收。
 
 ## 仓库里有什么
 
@@ -31,9 +31,6 @@ AGENTS.md                项目启动规则，给 agent 自动读取
 agents/                  Skill 的工具展示与触发配置
 references/              官方核验点、价格快照、模型输入、审查记录
 scripts/                 标准库费用计算器
-examples/
-  voting-snapshot/       读写分离的参考实现，含本地运行时测试
-  original-voting-site/  原投票站代码的脱敏副本，用于对照事故
 docs/
   articles/              事故长文、改写前原稿与图片
   evidence/              脱敏数字、统计口径与公开执行选段
@@ -49,8 +46,8 @@ tools/                   包结构、相对链接和隐私标记检查
 |---|---|
 | 看事故怎么发生 | [事故长文](docs/articles/incident-review.md) |
 | 给已有项目加规则 | 合并 [AGENTS.md](AGENTS.md)，连同 Skill 资源一起放入项目 |
-| 做自己的投票原型 | [快照示例](examples/voting-snapshot/README.md) |
-| 对照原站的缓存和轮询代码 | [原站脱敏示例](examples/original-voting-site/README.md) |
+| 做自己的投票原型 | [独立源码仓库：快照示例](https://github.com/KurosawaGeeker/cloudflare-voting-examples/tree/feat/voting-examples/voting-snapshot) |
+| 对照原站的缓存和轮询代码 | [独立源码仓库：原站脱敏示例](https://github.com/KurosawaGeeker/cloudflare-voting-examples/tree/feat/voting-examples/original-voting-site) |
 | 核对数字和执行记录 | [案例数字](docs/evidence/case-facts.json)、[证据说明](docs/evidence/case-notes.md) |
 | 准备分享这个案例 | [X 长帖](docs/social/x-thread.md)、[短稿](docs/social/short-posts.md) |
 | 看什么真的测过 | [验收记录](docs/verification.md) |
@@ -66,7 +63,7 @@ references/
 scripts/
 ```
 
-不要只复制入口文件。也不需要把事故图片、整套示例和依赖一起装进 Skill。安装后可以显式调用 `$cloudflare-cost-review`；其他支持 skills 的工具使用自己的安装目录。仅把文件放在本仓库顶层，不代表每个工具都会把它注册成全局 Skill。
+不要只复制入口文件。也不需要把事故图片或独立源码仓库装进 Skill。安装后可以显式调用 `$cloudflare-cost-review`；其他支持 skills 的工具使用自己的安装目录。仅把文件放在本仓库顶层，不代表每个工具都会把它注册成全局 Skill。
 
 ## 在本地计算和检查
 
@@ -84,8 +81,10 @@ python3 tools/check_package.py
 
 ## 使用边界与贡献
 
-累计用量不是已核实的最终扣款，请求不等于真人访问，正常增长与异常请求都需要建模。原站示例是所有者本地工作区的脱敏副本，不能据此声称完整还原了高峰期线上版本。快照示例只通过了本地检查，没有替原站完成迁移或恢复服务。
+累计用量不是已核实的最终扣款，请求不等于真人访问，正常增长与异常请求都需要建模。[独立源码仓库](https://github.com/KurosawaGeeker/cloudflare-voting-examples)中的原站示例是所有者本地工作区的脱敏副本，不能据此声称完整还原了高峰期线上版本。快照示例只通过了本地检查，没有替原站完成迁移或恢复服务。
 
 代码与原创文字采用 [MIT](LICENSE)；案例截图里的第三方人物作品和标识不随仓库重新授权，详见 [NOTICE](NOTICE.md)。依赖保留各自许可证。
+
+当前版本已将示例源码拆出，旧提交保留当时的目录记录。上面的 `--depth 1` 只克隆当前版本；若主动获取完整历史，仍会取得拆分前的示例。GitHub 的 **Use this template** 复制当前文件树。
 
 欢迎提交可复现的修正；贡献前阅读 [贡献说明](docs/contributing.md)。不要提交账号密钥、原始 IP、私人身份材料或未经审核的原始日志。

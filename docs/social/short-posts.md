@@ -46,7 +46,7 @@ CDN/R2 也不是自动省钱。
 
 最容易误解的是：验证码管投票，缓存管数据库，都不自动管进入收费 Worker 的请求总数。我们解释过计费，也做过防刷，但没有把前置拦截、预算响应、全部入口和线上验收接成闭环。
 
-我把事故长文、脱敏证据、成本审查 skill、AGENTS.md 和本地示例模板放在同一个仓库。长文见 `docs/articles/incident-review.md`。希望独立开发者用 AI 写出能跑的产品后，还能知道它在流量变大时会花多少钱。
+我把事故长文、脱敏证据、成本审查 skill 和 AGENTS.md 放在规则仓库，网站源码和快照示例单独开源。长文见 `docs/articles/incident-review.md`。希望独立开发者用 AI 写出能跑的产品后，还能知道它在流量变大时会花多少钱。
 
 ## 掘金 / 知乎文章导语
 
@@ -82,7 +82,7 @@ CDN/R2 也不是自动省钱。
 
 ⑤ 本地测试通过，不代表线上收费路径已经验收。
 
-现在我要求 AI 同时给功能模型和成本模型。文章、脱敏证据、审查 skill、AGENTS.md 和本地模板整理在同仓库，长文是 `docs/articles/incident-review.md`。
+现在我要求 AI 同时给功能模型和成本模型。文章、脱敏证据、审查 skill 和 AGENTS.md 整理在同仓库，网站源码和快照示例另外开源，长文是 `docs/articles/incident-review.md`。
 
 #独立开发 #AI编程 #Cloudflare #Serverless #技术复盘
 
@@ -93,3 +93,5 @@ CDN/R2 也不是自动省钱。
 ---
 
 资料入口：[事故长文](../articles/incident-review.md)、[公开数字](../evidence/case-facts.json)、[证据说明](../evidence/case-notes.md)。技术主张对应的官方来源在长文和 [X 长帖资料列表](x-thread.md) 中逐项列出。
+
+源码另见 [cloudflare-voting-examples](https://github.com/KurosawaGeeker/cloudflare-voting-examples)，规则模板不会自动拉取该仓库。

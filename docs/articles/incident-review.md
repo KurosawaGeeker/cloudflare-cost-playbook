@@ -10,7 +10,7 @@
 
 这对独立开发者和创业者尤其重要。我们选择 serverless，是为了降低运维压力、借助自动扩容快速验证 MVP；但自动扩容也意味着费用可以跟着请求一起增长。不能因为过去的项目没火，就一直把风险准备省掉。
 
-这也是我决定输出这个 [Cloudflare 成本审查 Skill](https://github.com/KurosawaGeeker/cloudflare-cost-playbook/blob/docs/cloudflare-cost-playbook/SKILL.md) 和 [AGENTS.md](https://github.com/KurosawaGeeker/cloudflare-cost-playbook/blob/docs/cloudflare-cost-playbook/AGENTS.md) 的原因。[开源仓库](https://github.com/KurosawaGeeker/cloudflare-cost-playbook)把规则放在最上层，原站脱敏代码和新的参考实现放在 `examples/`。我想让下一次“先做出来”，也能带着这些检查一起开始。
+这也是我决定输出这个 [Cloudflare 成本审查 Skill](https://github.com/KurosawaGeeker/cloudflare-cost-playbook/blob/docs/cloudflare-cost-playbook/SKILL.md) 和 [AGENTS.md](https://github.com/KurosawaGeeker/cloudflare-cost-playbook/blob/docs/cloudflare-cost-playbook/AGENTS.md) 的原因。[开源仓库](https://github.com/KurosawaGeeker/cloudflare-cost-playbook)把规则放在最上层；[原站脱敏源码与快照参考实现](https://github.com/KurosawaGeeker/cloudflare-voting-examples)单独开源，需要时再去看代码，不随模板一起带进新项目。我想让下一次“先做出来”，也能带着这些检查一起开始。
 
 ![投票页面：两张拟人形象、左右票数及投票按钮](images/voting-page.png)
 
@@ -213,7 +213,7 @@ R2 每月包含 1,000 万次读取，超额每百万次 $0.36；超额操作按�
 
 每 15 秒覆盖一次快照，30 天约 172,800 次写入，少于 100 万次月度写入包含额度，文件存储量也很小。但投票 POST、数据库、发布器、订阅和其他服务仍要分别算钱。
 
-以上是改进方案。本仓库模板提供了本地示例，但没有恢复原站，也没有证明原站线上费用已经降低。换存储、测通接口、通过本地测试，都不能替代部署后观察实际调用量和回源操作。
+以上是改进方案。[独立源码仓库里的快照示例](https://github.com/KurosawaGeeker/cloudflare-voting-examples/tree/feat/voting-examples/voting-snapshot)提供了本地实现，但没有恢复原站，也没有证明原站线上费用已经降低。换存储、测通接口、通过本地测试，都不能替代部署后观察实际调用量和回源操作。
 
 ## 6. 这不能归咎于第一个 prompt 少写了一句话
 
@@ -269,7 +269,7 @@ R2 每月包含 1,000 万次读取，超额每百万次 $0.36；超额操作按�
 
 > 涉及公开接口、轮询、推送或云服务选型时，先说明请求、计算、存储和日志怎么计费，给出正常与异常流量成本模型。缓存验收必须区分减少程序调用、减少 SQL 和减少回源。列出全部公开入口，验证异常请求在目标收费程序之前被阻止。做好账号级全局账单报警，明确覆盖的费用、分级阈值、送达验证、主动巡检、负责人、降级机制和延迟。每次交付分别列出本地完成、已提交、已部署、线上验证，以及仍未完成的部分。
 
-同仓库的 Skill 把这些要求展开成审查流程，AGENTS.md 给出能复制的短规则，项目模板提供读写分离的本地示例。实际采用哪种方案，要看业务能接受的延迟和预算，不是每个项目都必须用 R2 或 DO。
+本仓库的 Skill 把这些要求展开成审查流程，AGENTS.md 给出能复制的短规则；[独立源码仓库](https://github.com/KurosawaGeeker/cloudflare-voting-examples)提供原站代码对照和读写分离的本地示例。实际采用哪种方案，要看业务能接受的延迟和预算，不是每个项目都必须用 R2 或 DO。
 
 这次让我把三件事分开看：票能不能被乱加，数据库能不能扛住，请求费用能不能控制。验证码、数据库缓存和本地测试分别解决一部分问题；29 项本地测试通过，也不能证明线上费用已经受控。
 

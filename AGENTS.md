@@ -24,6 +24,7 @@
 - 涉及 API 配置，先提供实际配置页 URL。密钥使用秘密管理或隐藏输入，不进入源码、命令参数、日志或文档。
 - 不提交原始凭据、Cookie、IP、私人邮箱、身份证件、OAuth 登录链接和未经审核的截图或完整会话。事故证据使用脱敏聚合与公开选段；示例测试地址只能使用明确的合成数据。
 - 本案例累计用量费不是已核实的最终扣款；不能把全部请求称为恶意，也不能归因某个人或 IP。不要把参考实现描述为原站已经采用的架构。
-- 提交前运行 `python3 -m unittest discover -s tests -v` 与 `python3 tools/check_package.py`。改动示例时另运行对应 README 的检查；保留原稿和证据口径。
+- 提交前运行 `python3 -m unittest discover -s tests -v` 与 `python3 tools/check_package.py`。保留原稿和证据口径。网站源码位于独立的 `cloudflare-voting-examples` 仓库，改源码时在该仓库运行对应检查。
 - Branch、commit 和 PR title 使用 Conventional Commits；commit 至少满足 `type(scope): subject`。提 PR 或 issue 前检查目标仓库模板，描述验证结果和生成文件、codegen、DB schema 变动。
+- 规则模板只引用独立源码仓库，不重新收入网站源码，不加 submodule 或自动拉取脚本。用户明确要求参考代码时再访问。
 - 创建资源、部署、停服、改套餐、发布仓库和线上负载都遵循用户当时的授权；读取本文件不构成对所有远程操作的授权。

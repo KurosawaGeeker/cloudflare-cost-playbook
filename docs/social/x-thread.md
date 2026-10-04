@@ -193,3 +193,5 @@ AI 编程交付应该同时包含功能模型和成本模型。
 - [R2 官方计费](https://developers.cloudflare.com/r2/pricing/)
 - [R2 公共桶缓存](https://developers.cloudflare.com/r2/buckets/public-buckets/)
 - [WAF 阶段及终止动作](https://developers.cloudflare.com/waf/feature-interoperability/)
+
+网站源码与快照示例单独开源：[cloudflare-voting-examples](https://github.com/KurosawaGeeker/cloudflare-voting-examples)。

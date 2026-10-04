@@ -10,13 +10,14 @@ EXCLUDED = {".git", "node_modules", ".wrangler", "__pycache__", ".build", ".loca
 REQUIRED = ["README.md", "AGENTS.md", "SKILL.md", "LICENSE", "NOTICE.md",
             "docs/articles/incident-review.md", "docs/social/x-thread.md",
             "docs/social/short-posts.md", "docs/project-brief.md",
-            "examples/voting-snapshot/README.md", "examples/original-voting-site/README.md",
             "docs/evidence/case-facts.json", "docs/evidence/case-notes.md",
             "docs/verification.md", "scripts/cost_model.py", "agents/openai.yaml"]
 
 
 def main():
     issues = []
+    if (ROOT / "examples").exists() or (ROOT / ".gitmodules").exists():
+        issues.append("Website source belongs in the separate source repository; no bundled examples or submodules.")
     for name in REQUIRED:
         if not (ROOT / name).is_file():
             issues.append(f"Missing deliverable: {name}")
