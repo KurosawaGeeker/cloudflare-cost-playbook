@@ -1,0 +1,12 @@
+{
+  "verified_on": "2026-10-04",
+  "currency": "USD",
+  "plan": "Workers Standard paid; R2 Standard",
+  "sources": ["https://developers.cloudflare.com/workers/platform/pricing/", "https://developers.cloudflare.com/r2/pricing/"],
+  "workers_requests_per_million": "0.30",
+  "workers_cpu_ms_per_million": "0.02",
+  "r2_class_a_per_million": "4.50",
+  "r2_class_b_per_million": "0.36",
+  "r2_storage_per_gb_month": "0.015",
+  "note": "Historical rate snapshot for reproducible estimates; refresh before a real architecture or deployment decision."
+}

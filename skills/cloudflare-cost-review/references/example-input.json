@@ -1,0 +1,36 @@
+{
+  "label": "同样26.1亿次公共读；分钟发布每次HEAD+PUT，CPU暂按0估算，不是本案发票",
+  "window_days": 30,
+  "read_path": "direct_r2",
+  "public_reads": 2610000000,
+  "origin_fraction": "0.01",
+  "r2_operations_per_origin_read": "1",
+  "r2_class_b_other_operations": 43200,
+  "r2_class_a_operations": 43200,
+  "vote_posts": 0,
+  "publisher_invocations": 43200,
+  "worker_cpu_ms_before": 0,
+  "worker_cpu_ms_after": 0,
+  "r2_storage_gb_month": "0.000001",
+  "freshness": {
+    "publication_seconds": 60,
+    "cdn_ttl_seconds": 10,
+    "browser_ttl_seconds": 1,
+    "poll_seconds": 10,
+    "target_seconds": 90
+  },
+  "account_usage_before_window": {
+    "worker_requests": 0,
+    "worker_cpu_ms": 0,
+    "r2_class_a": 0,
+    "r2_class_b": 0,
+    "r2_storage_gb_month": "0"
+  },
+  "monthly_allowance": {
+    "worker_requests": 10000000,
+    "worker_cpu_ms": 30000000,
+    "r2_class_a": 1000000,
+    "r2_class_b": 10000000,
+    "r2_storage_gb_month": "10"
+  }
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Cloudflare 成本审查"
+  short_description: "检查公开接口、轮询与缓存的计费路径，给出费用模型和可验证的上线措施"
+  default_prompt: "使用 $cloudflare-cost-review 审查当前项目的请求与计费路径，给出正常和异常流量成本及验证状态。"
+policy:
+  allow_implicit_invocation: true
